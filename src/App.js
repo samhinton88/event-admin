@@ -7,6 +7,7 @@ import logo from './logo.svg';
 
 
 import { AdminTableContainer, NavBarLeft } from './containers';
+import CreateForm from './containers/CreateForm';
 import './style.sass'
 
 class App extends Component {
@@ -22,6 +23,7 @@ class App extends Component {
       <div className="App">
         <NavBarLeft />
         <AdminTableContainer />
+        <CreateForm />
       </div>
     );
   }
