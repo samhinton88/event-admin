@@ -7,11 +7,17 @@ const defaultState = {
   title: '',
   image: '',
   venue: '',
-  text: ''
+  text: '',
+  typeMap: {
+
+    image: 'file'
+  },
+  previewImageUrl: ''
 };
 
 export default (state = defaultState, action) => {
   switch(action.type) {
+
     case CREATE_FORM_INPUT_CHANGE:
       return {
         ...state,

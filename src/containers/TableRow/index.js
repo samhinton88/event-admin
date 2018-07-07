@@ -9,7 +9,7 @@ class TableRow extends Component {
     const { data, headerKeys } = this.props;
 
     const dataCells = headerKeys.map((field) => {
-      return <TableCell data={data[field]} key={data.id + field}/>
+      return <TableCell isImage={field === 'image'} data={data[field]} key={data.id + field}/>
     })
 
     return [...dataCells, <CRUDCell resourceId={data._id} />]

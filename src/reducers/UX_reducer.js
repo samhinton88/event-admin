@@ -4,7 +4,7 @@ import {
 } from '../actions/types';
 
 const defaultState = {
-  createFormVisible: false
+  createFormVisible: true
 };
 
 export default (state = defaultState, action) => {
