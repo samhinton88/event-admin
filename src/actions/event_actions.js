@@ -7,12 +7,15 @@ import {
   FETCH_EVENTS
 } from './types';
 
-const BASE_URL = 'https://sleepy-retreat-30937.herokuapp.com'
+import {BASE_URL} from './config'
 
 export const createEvent = (data) => async dispatch => {
-  const newUser = await axios.post(`${BASE_URL}/api/events`, data);
+  console.log('in createEvent AC with data', data)
 
-  dispatch({ type: EVENT_CREATE, payload: newUser });
+  const newEvent = await axios.post(`${BASE_URL}/api/events`, data);
+
+  console.log('newEvent coming back before reducer', newEvent)
+  dispatch({ type: EVENT_CREATE, payload: newEvent.data });
 }
 
 export const editEvent = (data, eventId) => async dispatch => {

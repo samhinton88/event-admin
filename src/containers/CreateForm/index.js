@@ -1,24 +1,33 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { changeFormInput } from '../../actions';
+import { changeFormInput, createEvent } from '../../actions';
 import Input from '../../components/Input';
 
 import './style.sass';
 
 class CreateForm extends Component {
   renderInputFields = () => {
-    const { fields, changeFormInput } = this.props;
+    const { fields, onChangeInput } = this.props;
 
     return Object.keys(fields).map((k) => {
-      return <Input field={k} onChange={changeFormInput} />
+      return (
+        <Input field={k} onChange={onChangeInput} value={fields[k]}/>
+      )
     })
   }
 
+  handleSubmit = () => {
+    const { fields } = this.props;
+
+    this.props.createResource(fields);
+  }
+
   render() {
+
     return (
       <div className='create-form'>
         {this.renderInputFields()}
-        <button>Submit</button>
+        <button onClick={this.handleSubmit}>Submit</button>
       </div>
     )
   }
@@ -34,10 +43,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onChangeInput: (field, text) => dispatch(changeFormInput(field, text))
+    onChangeInput: (field, text) => dispatch(changeFormInput(field, text)),
+    createResource: (data) => dispatch(createEvent(data))
   }
 }
 
 
 
-export default connect(mapStateToProps)(CreateForm)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateForm)

@@ -4,8 +4,15 @@ import './style.sass';
 class Input extends Component {
 
   render() {
+
+    const { value, field } = this.props;
+
     return (
-      <input placeholder={this.props.field}/>
+      <input
+        value={value}
+        placeholder={field}
+        onChange={(e) => this.props.onChange(field, e.target.value)}
+      />
     )
   }
 }
