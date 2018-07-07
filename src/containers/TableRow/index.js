@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 
-class NavBarLeft extends Component {
+class TableRow extends Component {
+
   render() {
     return (
-      <div className='nav-bar-left'>
+      <div className='table-row'>
 
       </div>
     )
   }
 }
 
-export { NavBarLeft }
+export default TableRow;

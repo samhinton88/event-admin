@@ -24,12 +24,13 @@ export default (state = defaultState, action) => {
       delete newState[action.payload];
       return  newState;
 
-      }
+
 
     case FETCH_EVENTS:
+      const normalisedEvents = nomalise(action.payload)
       return {
         ...state,
-        nomalise(action.payload)
+        normalisedEvents
       }
   }
 
