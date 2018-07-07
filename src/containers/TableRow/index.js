@@ -12,7 +12,7 @@ class TableRow extends Component {
       return <TableCell isImage={field === 'image'} data={data[field]} key={data.id + field}/>
     })
 
-    return [...dataCells, <CRUDCell resourceId={data._id} />]
+    return [...dataCells, <CRUDCell resourceId={data._id} data={data}/>]
   }
 
   render() {

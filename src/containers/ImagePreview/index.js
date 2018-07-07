@@ -15,7 +15,7 @@ class ImagePreview extends Component {
 const mapStateToProps = (state) => {
 
   return {
-    src: state.createForm.imagePreviewUrl
+    src: state.resourceForm.imagePreviewUrl
   }
 }
 

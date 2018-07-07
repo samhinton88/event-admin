@@ -7,7 +7,8 @@ import logo from './logo.svg';
 
 
 import { AdminTableContainer, NavBarLeft } from './containers';
-import CreateForm from './containers/CreateForm';
+import ResourceForm from './containers/ResourceForm';
+import ResourcePreview from './containers/ResourcePreview';
 import './style.sass'
 
 class App extends Component {
@@ -18,10 +19,18 @@ class App extends Component {
   }
 
   renderForm = () => {
-    const { createFormVisible } = this.props;
+    const { resourceFormVisible } = this.props;
 
-    if (createFormVisible) {
-      return <CreateForm />
+    if (resourceFormVisible) {
+      return <ResourceForm />
+    }
+  }
+
+  renderPreview = () => {
+    const { resourceFormVisible, resourceIsPreviewed } = this.props;
+
+    if (resourceFormVisible && resourceIsPreviewed ) {
+      return <ResourcePreview />
     }
   }
 
@@ -32,7 +41,7 @@ class App extends Component {
         <NavBarLeft />
         <AdminTableContainer />
         {this.renderForm()}
-
+        {this.renderPreview()}
       </div>
     );
   }
@@ -46,8 +55,11 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
   console.log(state)
+  const { resourceFormVisible, resourceIsPreviewed } = state.UX;
+
   return {
-    createFormVisible: state.UX.createFormVisible
+    resourceFormVisible: resourceFormVisible,
+    resourceIsPreviewed: resourceIsPreviewed
   }
 }
 

@@ -7,9 +7,11 @@ class CRUDCell extends Component {
 
   render() {
     return (
-      <td className='crud-cell'>
-        <CRUDButton role='viewupdate' resourceId={this.props.resourceId} label={'view / update'}/>
-        <CRUDButton role='delete' resourceId={this.props.resourceId} label={'delete'}/>
+      <td >
+        <div className='crud-cell'>
+          <CRUDButton purpose='viewupdate' data={this.props.data} resourceId={this.props.resourceId} label={'view / update'}/>
+          <CRUDButton purpose='delete' data={this.props.data} resourceId={this.props.resourceId} label={'delete'}/>
+        </div>
       </td>
     )
   }

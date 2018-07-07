@@ -1,25 +1,33 @@
 import {
-  SHOW_CREATE_FORM,
-  HIDE_CREATE_FORM
+  SHOW_RESOURCE_FORM,
+  HIDE_RESOURCE_FORM,
+  SET_RESOURCE_FORM_MODE
 } from '../actions/types';
 
 const defaultState = {
-  createFormVisible: true
+  resourceFormVisible: false,
+  updateViewFormVisible: false,
+  resourceFormMode: null,
+  resourceIsPreviewed: true
 };
 
 export default (state = defaultState, action) => {
   console.log('action in UXReducer')
   switch(action.type) {
-    case SHOW_CREATE_FORM:
+    case SHOW_RESOURCE_FORM:
       console.log('reducer fired')
       return {
         ...state,
-        createFormVisible: true
+        resourceFormVisible: true
       }
-    case HIDE_CREATE_FORM:
+    case HIDE_RESOURCE_FORM:
       return {
         ...state,
-        createFormVisible: false
+        resourceFormVisible: false
+      }
+    case SET_RESOURCE_FORM_MODE:
+      return {
+        resourceFormMode: action.payload
       }
 
   }

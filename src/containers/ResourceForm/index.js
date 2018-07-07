@@ -7,13 +7,12 @@ import ImageUploader from '../ImageUploader';
 
 import './style.sass';
 
-class CreateForm extends Component {
+class ResourceForm extends Component {
   renderInputFields = () => {
     const { fields, onChangeInput, typeMap } = this.props;
 
     return Object.keys(fields).map((k) => {
       if (typeMap[k] === 'file') {
-
         return <ImageUploader onChange={onChangeInput} field={k}/>
       }
       return (
@@ -26,9 +25,6 @@ class CreateForm extends Component {
     })
   }
 
-  renderImagePreview = () => {
-
-  }
 
   handleSubmit = () => {
     const { fields } = this.props;
@@ -42,8 +38,8 @@ class CreateForm extends Component {
     return (
       <div className='create-form'>
         <button onClick={this.props.hide}>close</button>
-        {this.renderInputFields()}
-        {this.renderImagePreview()}
+          {this.renderInputFields()}
+
         <button onClick={this.handleSubmit}>Submit</button>
         <ImagePreview />
       </div>
@@ -52,11 +48,15 @@ class CreateForm extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { createForm: { title, image, venue, time, text, typeMap } } = state
+  const {
+    resourceForm: { title, image, venue, time, text, typeMap } ,
+    UX: { formMode }
+  } = state
 
   return {
     fields: {title, image, venue, time, text},
-    typeMap
+    typeMap,
+    formMode
   }
 }
 
@@ -70,4 +70,4 @@ const mapDispatchToProps = (dispatch) => {
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateForm)
+export default connect(mapStateToProps, mapDispatchToProps)(ResourceForm)

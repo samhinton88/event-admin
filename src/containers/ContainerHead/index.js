@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { showCreateForm } from '../../actions';
+import { showResourceForm } from '../../actions';
 import './style.sass';
 
 class ContainerHead extends Component {
@@ -16,7 +16,7 @@ class ContainerHead extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    showCreateForm: () => dispatch(showCreateForm())
+    showCreateForm: () => dispatch(showResourceForm())
   }
 }
 

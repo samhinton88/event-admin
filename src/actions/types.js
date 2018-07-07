@@ -3,9 +3,12 @@ export const EVENT_EDIT = 'event_edit';
 export const EVENT_DELETE = 'event_delete';
 export const FETCH_EVENTS = 'fetch_events';
 
-export const CREATE_FORM_INPUT_CHANGE = 'create_form_input_change';
-export const CREATE_FORM_SUBMIT = 'create_form_submit';
-export const CREATE_FORM_SUBMIT_SUCCESS = 'create_form_submit_success';
+export const RESOURCE_FORM_INPUT_CHANGE = 'resource_form_input_change';
+export const RESOURCE_FORM_SUBMIT = 'resource_form_submit';
+export const RESOURCE_FORM_SUBMIT_SUCCESS = 'resource_form_submit_success';
+export const RESOURCE_FORM_HYDRATE = 'resource_form_hydrate';
 
-export const SHOW_CREATE_FORM = 'show_create_form';
-export const HIDE_CREATE_FORM = 'hide_create_form';
+export const SHOW_RESOURCE_FORM = 'show_resource_form';
+export const HIDE_RESOURCE_FORM = 'hide_resource_form';
+export const SET_RESOURCE_FORM_MODE = 'set_resource_form_mode';
+

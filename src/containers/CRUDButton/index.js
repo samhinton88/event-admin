@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { deleteEvent } from '../../actions';
+import { deleteEvent, hydrateResourceForm, showResourceForm } from '../../actions';
 import './style.sass';
 
 class CRUDButton extends Component {
   handleClick = () => {
-    this.props.deleteResource(this.props.resourceId)
+    const { purpose, data } = this.props;
+    if(purpose === 'delete') {
+      this.props.deleteResource(this.props.resourceId)
+    } else if (purpose === 'viewupdate') {
+      this.props.hydrateResourceForm(data)
+      this.props.showResourceForm()
+    }
   }
 
   renderStyle = () => {
-    const { role } = this.props;
+    const { purpose } = this.props;
 
-    if (role === 'viewupdate') { return ' view-update' }
+    if (purpose === 'viewupdate') { return ' view-update' }
 
-    if (role === 'delete') { return ' delete' }
+    if (purpose === 'delete') { return ' delete' }
   }
 
   render() {
@@ -27,7 +33,9 @@ class CRUDButton extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    deleteResource: (id) => dispatch(deleteEvent(id))
+    deleteResource: (id) => dispatch(deleteEvent(id)),
+    hydrateResourceForm: (data) => dispatch(hydrateResourceForm(data)),
+    showResourceForm: () => dispatch(showResourceForm())
   }
 }
 

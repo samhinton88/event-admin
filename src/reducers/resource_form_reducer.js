@@ -1,6 +1,7 @@
 import {
-  CREATE_FORM_INPUT_CHANGE,
-  CREATE_FORM_SUBMIT_SUCCESS
+  RESOURCE_FORM_INPUT_CHANGE,
+  RESOURCE_FORM_SUBMIT_SUCCESS,
+  RESOURCE_FORM_HYDRATE
 } from '../actions/types';
 
 const defaultState = {
@@ -18,13 +19,18 @@ const defaultState = {
 export default (state = defaultState, action) => {
   switch(action.type) {
 
-    case CREATE_FORM_INPUT_CHANGE:
+    case RESOURCE_FORM_INPUT_CHANGE:
       return {
         ...state,
         [action.field]:action.payload
       }
-    case CREATE_FORM_SUBMIT_SUCCESS:
+    case RESOURCE_FORM_SUBMIT_SUCCESS:
       return defaultState
+    case RESOURCE_FORM_HYDRATE:
+      return {
+        ...action.payload,
+        typeMap: defaultState.typeMap
+      }
   }
 
   return state;
