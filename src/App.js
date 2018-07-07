@@ -17,13 +17,22 @@ class App extends Component {
 
   }
 
+  renderForm = () => {
+    const { createFormVisible } = this.props;
+
+    if (createFormVisible) {
+      return <CreateForm />
+    }
+  }
+
   render() {
-    console.log('props in top level app', this.props)
+    console.log(this.props)
     return (
       <div className="App">
         <NavBarLeft />
         <AdminTableContainer />
-        <CreateForm />
+        {this.renderForm()}
+
       </div>
     );
   }
@@ -35,4 +44,11 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(App);
+const mapStateToProps = (state) => {
+  console.log(state)
+  return {
+    createFormVisible: state.UX.createFormVisible
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

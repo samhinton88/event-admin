@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { changeFormInput, createEvent } from '../../actions';
+import { changeFormInput, createEvent, hideCreateForm } from '../../actions';
 import Input from '../../components/Input';
 
 import './style.sass';
@@ -26,6 +26,7 @@ class CreateForm extends Component {
 
     return (
       <div className='create-form'>
+        <button onClick={this.props.hide}>close</button>
         {this.renderInputFields()}
         <button onClick={this.handleSubmit}>Submit</button>
       </div>
@@ -44,7 +45,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onChangeInput: (field, text) => dispatch(changeFormInput(field, text)),
-    createResource: (data) => dispatch(createEvent(data))
+    createResource: (data) => dispatch(createEvent(data)),
+    hide: () => dispatch(hideCreateForm())
   }
 }
 
