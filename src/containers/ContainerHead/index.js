@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import './style.sass';
 
-class NavBarLeft extends Component {
+class ContainerHead extends Component {
+
   render() {
     return (
-      <div className='nav-bar-left'>
+      <div className='container-head'>
 
       </div>
     )
   }
 }
 
-export { NavBarLeft }
+export default ContainerHead;

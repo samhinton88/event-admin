@@ -1,13 +1,23 @@
 // top level app
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchEvents } from './actions';
 import logo from './logo.svg';
-import './App.css';
+
 
 import { AdminTableContainer, NavBarLeft } from './containers';
+import './style.sass'
 
 class App extends Component {
+  componentDidMount() {
+
+    this.props.fetchEvents()
+
+  }
+
   render() {
+    console.log('props in top level app', this.props)
     return (
       <div className="App">
         <NavBarLeft />
@@ -17,4 +27,10 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchEvents: () => dispatch(fetchEvents())
+  }
+}
+
+export default connect(null, mapDispatchToProps)(App);

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import './style.sass'
 
 class TableCell extends Component {
   render() {
     return (
-      <div className='table-cell'>
-
-      </div>
+      <td className='table-cell'>
+        {this.props.data}
+      </td>
     )
   }
 }

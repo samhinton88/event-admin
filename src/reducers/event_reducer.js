@@ -27,10 +27,10 @@ export default (state = defaultState, action) => {
 
 
     case FETCH_EVENTS:
-      const normalisedEvents = nomalise(action.payload)
+
       return {
         ...state,
-        normalisedEvents
+        ...nomalise(action.payload.data)
       }
   }
 
@@ -40,6 +40,7 @@ export default (state = defaultState, action) => {
 
 function nomalise(data) {
   // return object listing items by id
+
 
   const out = {};
 

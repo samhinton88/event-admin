@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux';
 import eventReducer from './event_reducer';
 import authReducer from './auth_reducer';
+import tableInterfaceReducer from './table_interface_reducer';
 
 export default combineReducers({
-  events: eventReducer
+  events: eventReducer,
+  table: tableInterfaceReducer
 })
