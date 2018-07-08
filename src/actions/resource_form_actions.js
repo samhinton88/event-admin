@@ -5,7 +5,8 @@ import { BASE_URL } from './config';
 import {
   RESOURCE_FORM_INPUT_CHANGE,
   RESOURCE_FORM_SUBMIT,
-  RESOURCE_FORM_HYDRATE
+  RESOURCE_FORM_HYDRATE,
+  RESOURCE_FORM_IMAGE_CHANGE
 } from './types';
 
 export const changeFormInput = (field, text) => {
@@ -21,4 +22,8 @@ export const createFormSubmit = () =>  {
 
 export const hydrateResourceForm = (resourceData) => {
   return { type: RESOURCE_FORM_HYDRATE, payload: resourceData }
+}
+
+export const considerAlternateImage = () => {
+  return { type: RESOURCE_FORM_IMAGE_CHANGE }
 }

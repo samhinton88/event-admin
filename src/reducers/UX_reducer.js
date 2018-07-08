@@ -15,7 +15,6 @@ export default (state = defaultState, action) => {
   console.log('action in UXReducer')
   switch(action.type) {
     case SHOW_RESOURCE_FORM:
-      console.log('reducer fired')
       return {
         ...state,
         resourceFormVisible: true
@@ -27,6 +26,7 @@ export default (state = defaultState, action) => {
       }
     case SET_RESOURCE_FORM_MODE:
       return {
+        ...state,
         resourceFormMode: action.payload
       }
 

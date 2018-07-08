@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import BufferImage from '../../components/BufferImage';
 import './style.sass'
 
 class TableCell extends Component {
@@ -7,14 +8,9 @@ class TableCell extends Component {
     if (!data) { return }
 
     if (isImage) {
-
-      const string64 = Buffer(data.data).toString('base64')
-      return (
-        <img
-          className='table-cell-image'
-          src={'data:image/png;base64, '+ string64 }
-        />
-      )
+      const { contentType, data: imageData } = data;
+      console.log('table cell isImage, send to buffer image with data:', data)
+      return <BufferImage data={imageData} contentType={contentType}/>
     }
 
     if (typeof data === 'string') {

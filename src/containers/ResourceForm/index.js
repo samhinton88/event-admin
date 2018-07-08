@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { changeFormInput, createEvent, hideCreateForm } from '../../actions';
+import { changeFormInput, createEvent, hideCreateForm, editEvent } from '../../actions';
 import ImagePreview from '../ImagePreview';
 import Input from '../../components/Input';
 import ImageUploader from '../ImageUploader';
@@ -27,21 +27,27 @@ class ResourceForm extends Component {
 
 
   handleSubmit = () => {
-    const { fields } = this.props;
+    const { fields, formMode, resourceId } = this.props;
 
-    this.props.createResource(fields);
+    if (formMode === 'create') {
+      this.props.createResource(fields);
+    } else if (formMode === 'edit') {
+      console.log('about to send resourceId', resourceId)
+      this.props.editEvent(fields, resourceId)
+    }
   }
 
   render() {
-    console.log('props in create form', this.props)
+    const { formMode } = this.props;
+    const label = formMode === 'create' ? 'Create Event' : 'Update Event';
 
     return (
       <div className='create-form'>
-        <button onClick={this.props.hide}>close</button>
+        <button className='close' onClick={this.props.hide}>x</button>
           {this.renderInputFields()}
 
-        <button onClick={this.handleSubmit}>Submit</button>
-        <ImagePreview />
+        <button className='submit' onClick={this.handleSubmit}>{label}</button>
+
       </div>
     )
   }
@@ -49,14 +55,15 @@ class ResourceForm extends Component {
 
 const mapStateToProps = (state) => {
   const {
-    resourceForm: { title, image, venue, time, text, typeMap } ,
-    UX: { formMode }
+    resourceForm: { title, image, venue, time, text, typeMap, resourceId } ,
+    UX: { resourceFormMode }
   } = state
 
   return {
     fields: {title, image, venue, time, text},
     typeMap,
-    formMode
+    formMode: resourceFormMode,
+    resourceId
   }
 }
 
@@ -64,6 +71,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onChangeInput: (field, text) => dispatch(changeFormInput(field, text)),
     createResource: (data) => dispatch(createEvent(data)),
+    editEvent: (data, id) => dispatch(editEvent(data, id)),
     hide: () => dispatch(hideCreateForm())
   }
 }

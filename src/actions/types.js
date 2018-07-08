@@ -8,6 +8,8 @@ export const RESOURCE_FORM_SUBMIT = 'resource_form_submit';
 export const RESOURCE_FORM_SUBMIT_SUCCESS = 'resource_form_submit_success';
 export const RESOURCE_FORM_HYDRATE = 'resource_form_hydrate';
 
+export const RESOURCE_FORM_IMAGE_CHANGE = 'resource_form_image_change';
+
 export const SHOW_RESOURCE_FORM = 'show_resource_form';
 export const HIDE_RESOURCE_FORM = 'hide_resource_form';
 export const SET_RESOURCE_FORM_MODE = 'set_resource_form_mode';

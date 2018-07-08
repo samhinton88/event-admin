@@ -6,7 +6,7 @@ import './style.sass';
 class ResourcePreview extends Component {
   renderHeader = () => {
     const { title, venue } = this.props.previewData;
-    console.log('title', title)
+
     return (
       <div className='preview-header-text-container'>
         <h2 className='title-text'>{title}</h2>
@@ -17,10 +17,6 @@ class ResourcePreview extends Component {
   }
 
   renderImage = () => {
-    const { previewImageUrl } = this.props;
-
-
-
 
     return <ImagePreview />
   }
@@ -32,6 +28,7 @@ class ResourcePreview extends Component {
   }
 
   render() {
+    console.log('props in resource-preview', this.props)
     return (
       <div className='resource-preview'>
         <div className='image-preview-container'>

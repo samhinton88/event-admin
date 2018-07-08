@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { deleteEvent, hydrateResourceForm, showResourceForm } from '../../actions';
+import {
+  deleteEvent,
+  hydrateResourceForm,
+  showResourceForm,
+  setResourceFormMode
+} from '../../actions';
 import './style.sass';
 
 class CRUDButton extends Component {
@@ -9,7 +14,9 @@ class CRUDButton extends Component {
     if(purpose === 'delete') {
       this.props.deleteResource(this.props.resourceId)
     } else if (purpose === 'viewupdate') {
+      // replace with SET_RESOURCE_FORM_PROPS
       this.props.hydrateResourceForm(data)
+      this.props.setResourceFormMode('edit')
       this.props.showResourceForm()
     }
   }
@@ -35,7 +42,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     deleteResource: (id) => dispatch(deleteEvent(id)),
     hydrateResourceForm: (data) => dispatch(hydrateResourceForm(data)),
-    showResourceForm: () => dispatch(showResourceForm())
+    showResourceForm: () => dispatch(showResourceForm()),
+    setResourceFormMode: (mode) => dispatch(setResourceFormMode(mode))
   }
 }
 

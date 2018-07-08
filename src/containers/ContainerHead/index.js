@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { showResourceForm } from '../../actions';
+import { showResourceForm, setResourceFormMode } from '../../actions';
 import './style.sass';
 
 class ContainerHead extends Component {
+  handleCreateResourceClick = () => {
+    this.props.setResourceFormMode('create')
+    this.props.showCreateForm()
+  }
 
   render() {
     return (
       <div className='container-head'>
-        <button onClick={() => this.props.showCreateForm()}>Create Resource</button>
+        <button onClick={this.handleCreateResourceClick}>Create Resource</button>
       </div>
     )
   }
@@ -16,7 +20,8 @@ class ContainerHead extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    showCreateForm: () => dispatch(showResourceForm())
+    showCreateForm: () => dispatch(showResourceForm()),
+    setResourceFormMode: (mode) => dispatch(setResourceFormMode(mode))
   }
 }
 

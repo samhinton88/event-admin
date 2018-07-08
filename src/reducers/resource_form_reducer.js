@@ -9,6 +9,7 @@ const defaultState = {
   image: '',
   venue: '',
   text: '',
+  resourceId: null,
   typeMap: {
 
     image: 'file'
@@ -29,7 +30,8 @@ export default (state = defaultState, action) => {
     case RESOURCE_FORM_HYDRATE:
       return {
         ...action.payload,
-        typeMap: defaultState.typeMap
+        typeMap: defaultState.typeMap,
+        resourceId: action.payload._id
       }
   }
 

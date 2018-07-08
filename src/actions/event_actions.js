@@ -4,7 +4,9 @@ import {
   EVENT_CREATE,
   EVENT_DELETE,
   EVENT_EDIT,
-  FETCH_EVENTS
+  FETCH_EVENTS,
+  RESOURCE_FORM_SUBMIT_SUCCESS,
+  HIDE_RESOURCE_FORM
 } from './types';
 
 import {BASE_URL} from './config'
@@ -14,11 +16,14 @@ export const createEvent = (data) => async dispatch => {
 
   const newEvent = await axios.post(`${BASE_URL}/api/events`, data);
 
-  console.log('newEvent coming back before reducer', newEvent)
+  dispatch({ type: RESOURCE_FORM_SUBMIT_SUCCESS})
+  dispatch({ type: HIDE_RESOURCE_FORM })
+
   dispatch({ type: EVENT_CREATE, payload: newEvent.data });
 }
 
 export const editEvent = (data, eventId) => async dispatch => {
+  console.log('id in editEvent', eventId)
   const editedEvent = await axios.put(`${BASE_URL}/api/events/${eventId}`, data)
 
   dispatch({ type: EVENT_EDIT, payload: editedEvent })

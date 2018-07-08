@@ -11,9 +11,13 @@ class ImageUploader extends Component {
     reader.onloadend = () => {
 
       const { result } = reader;
-      // start of string is not suitable for buffering as base64
-      const base64 = result.split('base64')[1];
-      this.props.onChange(field, base64)
+
+      console.log('on load result', result)
+      // start of string is not suitable for direct buffering as base64
+      const [dataType, base64] = result.split('base64');
+      const buffer = Buffer.from(base64, 'base64')
+
+      this.props.onChange(field, {contentType: dataType, data: buffer})
       this.props.onChange('imagePreviewUrl', result)
 
     }
