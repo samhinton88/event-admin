@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { changeFormInput, createEvent, hideCreateForm, editEvent } from '../../actions';
 import ImagePreview from '../ImagePreview';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
 import Input from '../../components/Input';
 import ImageUploader from '../ImageUploader';
 
+// required for datepicker
+import 'react-datepicker/dist/react-datepicker.css'
 import './style.sass';
 
 class ResourceForm extends Component {
@@ -12,8 +16,23 @@ class ResourceForm extends Component {
     const { fields, onChangeInput, typeMap } = this.props;
 
     return Object.keys(fields).map((k) => {
-      if (typeMap[k] === 'file') {
+
+      const dataType = typeMap[k];
+      console.log(dataType)
+      if (dataType === 'file') {
+
         return <ImageUploader onChange={onChangeInput} field={k}/>
+
+      } else if (dataType === 'date') {
+
+        console.log('woooo date')
+        return (
+          <DatePicker
+            showTimeSelect
+            onChange={(e) => onChangeInput(k, moment(e)) }
+            value={fields[k].toString()}
+            selected={null}
+          />)
       }
       return (
         <Input

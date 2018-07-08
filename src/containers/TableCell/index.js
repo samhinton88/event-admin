@@ -9,7 +9,7 @@ class TableCell extends Component {
 
     if (isImage) {
       const { contentType, data: imageData } = data;
-      console.log('table cell isImage, send to buffer image with data:', data)
+
       return <BufferImage data={imageData} contentType={contentType}/>
     }
 

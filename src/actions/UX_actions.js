@@ -15,3 +15,5 @@ export const hideCreateForm = () => {
 export const setResourceFormMode= (mode) => {
   return { type: SET_RESOURCE_FORM_MODE, payload: mode}
 }
+
+

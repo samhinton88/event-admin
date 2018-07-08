@@ -34,12 +34,21 @@ class App extends Component {
     }
   }
 
+  renderGreyOut = () => {
+    const { resourceFormVisible } = this.props;
+
+    if (resourceFormVisible) {
+      return <div className='grey-out'></div>
+    }
+  }
+
   render() {
     console.log(this.props)
     return (
       <div className="App">
         <NavBarLeft />
         <AdminTableContainer />
+        {this.renderGreyOut()}
         {this.renderForm()}
         {this.renderPreview()}
       </div>

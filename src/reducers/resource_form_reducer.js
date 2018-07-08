@@ -6,12 +6,13 @@ import {
 
 const defaultState = {
   title: '',
-  image: '',
+  image: {data: '', contentType: ''},
   venue: '',
   text: '',
+  time: new Date(),
   resourceId: null,
   typeMap: {
-
+    time: 'date',
     image: 'file'
   },
   previewImageUrl: ''
@@ -21,6 +22,7 @@ export default (state = defaultState, action) => {
   switch(action.type) {
 
     case RESOURCE_FORM_INPUT_CHANGE:
+      console.log('reducer with action.payload', action.payload)
       return {
         ...state,
         [action.field]:action.payload

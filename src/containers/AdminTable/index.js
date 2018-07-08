@@ -9,7 +9,8 @@ import './style.sass';
 class AdminTable extends Component {
 
   renderTableRows = () => {
-    const { events } = this.props;
+    const { events, isLoading } = this.props;
+    if (isLoading) { return <h1>Loading</h1>}
 
     return Object.keys(events).map((k) => {
       return <TableRow data={events[k]} key={k}/>
@@ -25,8 +26,8 @@ class AdminTable extends Component {
   render() {
     console.log('admin-table props', this.props)
     return (
-      <div className='admin-table'>
-        <table>
+      <div >
+        <table className='admin-table'>
           <thead>
             {this.renderTableHeaders()}
           </thead>
@@ -42,6 +43,7 @@ class AdminTable extends Component {
 const mapStateToProps = (state) => {
   return {
     events: state.events,
+    isLoading: state.UX.loadingResources,
     headerKeys: state.table.headerKeys
   }
 }

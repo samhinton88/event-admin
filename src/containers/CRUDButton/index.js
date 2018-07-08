@@ -18,6 +18,9 @@ class CRUDButton extends Component {
       this.props.hydrateResourceForm(data)
       this.props.setResourceFormMode('edit')
       this.props.showResourceForm()
+    } else if (purpose === 'create') {
+      this.props.setResourceFormMode('create')
+      this.props.showResourceForm()
     }
   }
 
@@ -27,6 +30,8 @@ class CRUDButton extends Component {
     if (purpose === 'viewupdate') { return ' view-update' }
 
     if (purpose === 'delete') { return ' delete' }
+
+    if (purpose === 'create') { return ' create' }
   }
 
   render() {

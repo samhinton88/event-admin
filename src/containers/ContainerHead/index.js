@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { showResourceForm, setResourceFormMode } from '../../actions';
+import CRUDButton from '../CRUDButton';
 import './style.sass';
 
 class ContainerHead extends Component {
@@ -12,7 +13,10 @@ class ContainerHead extends Component {
   render() {
     return (
       <div className='container-head'>
-        <button onClick={this.handleCreateResourceClick}>Create Resource</button>
+        <div className='create-button-container'>
+          <CRUDButton purpose='create' label='Create Event'/>
+        </div>
+
       </div>
     )
   }

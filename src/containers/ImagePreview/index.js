@@ -32,11 +32,19 @@ class ImagePreview extends Component {
 }
 
 const mapStateToProps = (state) => {
+  const { resourceForm, UX } = state;
+
+  let bufferData = null, imageType = null;
+
+  if (resourceForm.image) {
+    bufferData = resourceForm.image.data;
+    imageType = resourceForm.image.contentType;
+  }
 
   return {
-    imagePreviewUrl: state.resourceForm.imagePreviewUrl,
-    bufferData: state.resourceForm.image.data,
-    imageType: state.resourceForm.image.contentType,
+    imagePreviewUrl: resourceForm.imagePreviewUrl,
+    bufferData,
+    imageType,
     formMode: state.UX.resourceFormMode
   }
 }

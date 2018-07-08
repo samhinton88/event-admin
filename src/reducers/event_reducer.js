@@ -10,15 +10,13 @@ const defaultState = {};
 export default (state = defaultState, action) => {
   switch (action.type) {
     case EVENT_CREATE:
-      console.log('action coming through in reducer', action)
-      console.log('below code does this', {
-        ...state, [action.payload._id]: action.payload
-      })
+
       return {
         ...state, [action.payload._id]: action.payload
       }
 
     case EVENT_EDIT:
+      console.log('event_edit in event reducer with action', action)
       return {
         ...state, [action.payload._id]: action.payload
       }

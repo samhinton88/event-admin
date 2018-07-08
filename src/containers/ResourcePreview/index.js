@@ -5,11 +5,12 @@ import './style.sass';
 
 class ResourcePreview extends Component {
   renderHeader = () => {
-    const { title, venue } = this.props.previewData;
+    const { title, venue, time } = this.props.previewData;
 
     return (
       <div className='preview-header-text-container'>
         <h2 className='title-text'>{title}</h2>
+        <p className='title-time'>{JSON.stringify(time.toString())}</p>
           <span className='at-sign-span'>@</span>
         <h2 className='venue-text'>{venue}</h2>
       </div>

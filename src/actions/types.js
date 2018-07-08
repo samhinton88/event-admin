@@ -14,3 +14,7 @@ export const SHOW_RESOURCE_FORM = 'show_resource_form';
 export const HIDE_RESOURCE_FORM = 'hide_resource_form';
 export const SET_RESOURCE_FORM_MODE = 'set_resource_form_mode';
 
+export const RESOURCES_LOADING = 'resource_loading';
+export const RESOURCES_LOADED = 'resources_loaded';
+
+
