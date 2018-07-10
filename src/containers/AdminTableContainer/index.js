@@ -9,7 +9,9 @@ class AdminTableContainer extends Component {
   render() {
     return (
       <div className='admin-table-container'>
-        <ContainerHead />
+        <div className='container-head-wrapper'>
+          <ContainerHead />
+        </div>
         <AdminTable />
       </div>
     )

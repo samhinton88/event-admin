@@ -29,10 +29,14 @@ class AdminTable extends Component {
       <div >
         <table className='admin-table'>
           <thead>
-            {this.renderTableHeaders()}
+
+              {this.renderTableHeaders()}
+
           </thead>
           <tbody>
+
             {this.renderTableRows()}
+
           </tbody>
         </table>
       </div>

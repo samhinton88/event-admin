@@ -1,8 +1,11 @@
 .admin-table
-  height: 500px
+
   border-collapse: collapse
+
   thead
     background: rgba(0, 0, 0, 0.7)
+  tbody
+    overflow: scroll
   th
     border-borrom: 1px solid grey
     color: white
@@ -11,8 +14,22 @@
     text-align: left
 
   td
-    padding: 0.5rem
     font-size: 12px
     border-bottom: 1px solid rgba(0, 0, 0, 0.4)
-    height: 100px
-    width: 100px
+    border-left: 1px solid rgba(0, 0, 0, 0.2)
+    max-width: 200px
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+    div
+      max-width: 200px
+      min-width: 100px
+      height: 70px
+      text-overflow: ellipsis
+      padding: 2px
+      background: rgba(0, 0, 0, 0.1)
+      display: flex
+      align-items: center
+
+.table-body-scroll
+  overflow: scroll

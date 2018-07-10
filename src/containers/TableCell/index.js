@@ -10,7 +10,11 @@ class TableCell extends Component {
     if (isImage) {
       const { contentType, data: imageData } = data;
 
-      return <BufferImage data={imageData} contentType={contentType}/>
+      return (
+        <div className='cell-data-container'>
+          <BufferImage data={imageData} contentType={contentType}/>
+        </div>
+      )
     }
 
     if (typeof data === 'string') {
@@ -21,7 +25,9 @@ class TableCell extends Component {
   render() {
     return (
       <td className='table-cell'>
-        {this.renderFieldData()}
+        <div className='cell-data-container'>
+          {this.renderFieldData()}
+        </div>
       </td>
     )
   }
